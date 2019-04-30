@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
   # And this give us access to http://localhost:3000/clans/1/samurais
   resources :clans, only: %i[index create] do
-    resources :samurais, module: :clans
+    resources :samurais, module: :clans do
+      collection do
+        get :alive
+        get :dead
+      end
+    end
   end
 
 

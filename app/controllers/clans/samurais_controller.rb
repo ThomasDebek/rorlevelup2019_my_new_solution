@@ -8,6 +8,7 @@ module Clans
 
     def index
       samurais = clan.samurais
+=begin
       if params.key?(:alive)
         if params[:alive].to_i == 0
           render json: samurais.dead.to_json
@@ -17,6 +18,19 @@ module Clans
       else
         render json: samurais.to_json
       end
+=end
+
+      render json: samurais.to_json
+    end
+
+    def alive
+     samurais = clan.samurais
+     render json: samurais.alive.to_json
+    end
+
+    def dead
+      samurais = clan.samurais.all
+      render json: samurais.dead.to_json
     end
 
     def create
